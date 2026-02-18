@@ -1,7 +1,6 @@
 import express from 'express'
 const router = express.Router();
 
-// In-memory tasks array
 let tasks = [
   { id: 1, title: "Learn Express", completed: false },
   { id: 2, title: "Build Task Manager API", completed: true },
@@ -9,7 +8,6 @@ let tasks = [
 
 let nextId = 3;
 
-// GET /tasks (with optional filter)
 router.get("/", (req, res) => {
   const { completed } = req.query;
 
@@ -19,7 +17,7 @@ router.get("/", (req, res) => {
   return res.json(tasks.filter((t) => t.completed === isCompleted));
 });
 
-// GET /tasks/:id
+
 router.get("/:id", (req, res) => {
   const id = +req.params.id;
   const task = tasks.find((t) => t.id === id);
@@ -29,7 +27,7 @@ router.get("/:id", (req, res) => {
   res.json(task);
 });
 
-// POST /tasks
+
 router.post("/", (req, res) => {
   const { title } = req.body;
 
@@ -41,7 +39,6 @@ router.post("/", (req, res) => {
   res.status(201).json(newTask);
 });
 
-// PUT /tasks/:id
 router.put("/:id", (req, res) => {
   const id = +req.params.id;
   const task = tasks.find((t) => t.id === id);
@@ -54,7 +51,6 @@ router.put("/:id", (req, res) => {
   res.json(task);
 });
 
-// DELETE /tasks/:id
 router.delete("/:id", (req, res) => {
   const id = +req.params.id;
   const index = tasks.findIndex((t) => t.id === id);
@@ -65,4 +61,4 @@ router.delete("/:id", (req, res) => {
   res.status(204).send();
 });
 
-module.exports = router;
+export default router;
