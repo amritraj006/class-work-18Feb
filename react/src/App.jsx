@@ -48,7 +48,7 @@ export default function App() {
     <div>
       <h2>Task Manager</h2>
 
-      {/* Add Task */}
+
       <input
         value={title}
         onChange={(e) => setTitle(e.target.value)}
@@ -59,7 +59,7 @@ export default function App() {
       <br />
       <br />
 
-      {/* Filter */}
+
       <label>Filter: </label>
       <select value={filter} onChange={(e) => setFilter(e.target.value)}>
         <option value="all">All</option>
@@ -70,7 +70,6 @@ export default function App() {
       <br />
       <br />
 
-      {/* Task List */}
       {tasks.length === 0 ? (
         <p>No tasks found</p>
       ) : (
