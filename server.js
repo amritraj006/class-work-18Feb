@@ -16,7 +16,7 @@ let tasks = [
 
 let nextId = 3;
 
-// ✅ GET /tasks (with optional filter)
+
 app.get("/tasks", (req, res) => {
   const { completed } = req.query;
 
@@ -26,7 +26,7 @@ app.get("/tasks", (req, res) => {
   return res.json(tasks.filter((t) => t.completed === isCompleted));
 });
 
-// ✅ GET /tasks/:id
+
 app.get("/tasks/:id", (req, res) => {
   const id = +req.params.id;
   const task = tasks.find((t) => t.id === id);
@@ -36,7 +36,6 @@ app.get("/tasks/:id", (req, res) => {
   res.json(task);
 });
 
-// ✅ POST /tasks
 app.post("/tasks", (req, res) => {
   const { title } = req.body;
 
@@ -54,7 +53,6 @@ app.post("/tasks", (req, res) => {
   res.status(201).json(newTask);
 });
 
-// ✅ PUT /tasks/:id
 app.put("/tasks/:id", (req, res) => {
   const id = +req.params.id;
   const task = tasks.find((t) => t.id === id);
@@ -69,7 +67,6 @@ app.put("/tasks/:id", (req, res) => {
   res.json(task);
 });
 
-// ✅ DELETE /tasks/:id
 app.delete("/tasks/:id", (req, res) => {
   const id = +req.params.id;
   const index = tasks.findIndex((t) => t.id === id);
